@@ -1,0 +1,25 @@
+services:
+  geth-for-codex:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8545:8545
+      - 30303:30303
+    environment:
+      - GETH_ARGS=--http --http.addr 0.0.0.0
+      - ENABLE_MINER=1
+      - UNLOCK_START_INDEX=0
+      - UNLOCK_NUMBER=1
+  geth-for-codex2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8546:8546
+    environment:
+      - GETH_ARGS=--http --http.addr 0.0.0.0 --bootnodes enode://5db8dc8028481a409c3f7a7bcd138926ada0b8b412f7df51e4fd34f67327a5a9d522367af4c0d4fdbc745b81702f88e1ade6cc50ea54997b7d069a5e6082734d@192.168.0.3:30303 --nat=extip:192.168.0.3 --ws --ws.addr 0.0.0.0 --ipcdisable --syncmode full
+      - UNLOCK_START_INDEX=2
+      - UNLOCK_NUMBER=1
+      - NUMBER_OF_ACCOUNTS=1
+ 
