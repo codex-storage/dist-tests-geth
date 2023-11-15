@@ -17,6 +17,11 @@ fi
 
 echo "Starting geth..."
 
+PUBLIC_IP_ARGS=""
+if [[ "${NAT_PUBLIC_IP_AUTO}" == "true" ]]; then
+  PUBLIC_IP_ARGS=--nat=extip:$(curl https://ipinfo.io/ip)
+fi
+
 if [ -n "$ENABLE_MINER" ]; then
     MINER_ARGS="--mine --miner.etherbase 0x10420A3dE36231E12eb601F45b4004311372dcEa"
 else
@@ -26,7 +31,8 @@ fi
 echo "UNLOCK_ARGS: $UNLOCK_ARGS"
 echo "MINER_ARGS: $MINER_ARGS"
 echo "GETH_ARGS: $GETH_ARGS"
+echo "PUBLIC_IP_ARGS: $PUBLIC_IP_ARGS"
 
 geth init genesis.json
-geth --networkid 789988 --http --http.addr 0.0.0.0 --allow-insecure-unlock --http.vhosts '*' $UNLOCK_ARGS $MINER_ARGS $GETH_ARGS
+geth --networkid 789988 --http --http.addr 0.0.0.0 --allow-insecure-unlock --http.vhosts '*' $UNLOCK_ARGS $MINER_ARGS $PUBLIC_IP_ARGS $GETH_ARGS
 exit 0
