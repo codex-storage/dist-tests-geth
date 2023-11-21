@@ -24,7 +24,7 @@ if [[ -n "${NAT_PUBLIC_IP_AUTO}" ]]; then
   WAIT=60
   SECONDS=0
   SLEEP=5
-  while (( SECONDS < WAIT )); do
+  while (( $SECONDS < $WAIT )); do
     PUBLIC_IP_ARGS=--nat=extip:$(curl -s -f -m 5 "${NAT_PUBLIC_IP_AUTO}")
     # Check if exit code is 0 and returned value is not empty
     [[ $? -eq 0 && -n "${PUBLIC_IP_ARGS}" ]] && { echo "Public: Set extip: ${PUBLIC_IP_ARGS}"; break; } || { echo "Can't get Public IP - Retry in $SLEEP seconds / $((WAIT - SECONDS))"; }
