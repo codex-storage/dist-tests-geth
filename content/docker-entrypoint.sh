@@ -21,10 +21,10 @@ echo "Starting geth..."
 PUBLIC_IP_ARGS=""
 if [[ -n "${NAT_PUBLIC_IP_AUTO}" ]]; then
   # Run for 60 seconds if fail
-  WAIT=60
-  SECONDS=0
-  SLEEP=5
-  while (( $SECONDS < $WAIT )); do
+  wait=60
+  end=$(( $(date +%s) + wait ))
+  sleep=5
+  while [[ $(date +%s) -lt $end ]]; do
     PUBLIC_IP=$(curl -s -f -m 5 "${NAT_PUBLIC_IP_AUTO}")
     # Check if exit code is 0 and returned value is not empty
     if [[ $? -eq 0 && -n "${PUBLIC_IP}" ]]; then
@@ -32,10 +32,10 @@ if [[ -n "${NAT_PUBLIC_IP_AUTO}" ]]; then
       echo "Public: Set extip: ${PUBLIC_IP_ARGS}"
       break
     else
-      echo "Can't get Public IP - Retry in $SLEEP seconds / $((WAIT - SECONDS))"
+      echo "Can't get Public IP - Retry in $sleep seconds / $(( end - $(date +%s) ))"
     fi
     # Sleep and check again
-    sleep $SLEEP
+    sleep $sleep
   done
 fi
 
