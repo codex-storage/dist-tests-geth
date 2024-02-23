@@ -1,6 +1,20 @@
-=============== May 2, 2023 (UTC) ===============
-13:20:01.365936 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
-13:20:01.373838 db@open opening
-13:20:01.375213 version@stat F·[] S·0B[] Sc·[]
-13:20:01.378114 db@janitor F·2 G·0
-13:20:01.378157 db@open done T·4.29388ms
+=============== Feb 23, 2024 (UTC) ===============
+14:38:26.317028 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+14:38:26.325246 db@open opening
+14:38:26.326322 version@stat F·[] S·0B[] Sc·[]
+14:38:26.330662 db@janitor F·2 G·0
+14:38:26.330720 db@open done T·5.458521ms
+14:38:32.303349 db@close closing
+14:38:32.303504 db@close done T·153.129µs
+=============== Feb 23, 2024 (UTC) ===============
+14:39:14.567751 log@legend F·NumFile S·FileSize N·Entry C·BadEntry B·BadBlock Ke·KeyError D·DroppedEntry L·Level Q·SeqNum T·TimeElapsed
+14:39:14.567851 version@stat F·[] S·0B[] Sc·[]
+14:39:14.567889 db@open opening
+14:39:14.567935 journal@recovery F·1
+14:39:14.568711 journal@recovery recovering @1
+14:39:14.571563 memdb@flush created L0@2 N·9 S·431B "loc..seq,v2":"version,v1"
+14:39:14.572763 version@stat F·[1] S·431B[431B] Sc·[0.25]
+14:39:14.583159 db@janitor F·3 G·0
+14:39:14.583193 db@open done T·15.295075ms
+14:44:14.672662 db@close closing
+14:44:14.672697 db@close done T·33.894µs
