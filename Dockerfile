@@ -1,4 +1,4 @@
-FROM ethereum/client-go:v1.11.6
+FROM ethereum/client-go:v1.11.5
 RUN  apk --update add curl
 
 COPY content .
